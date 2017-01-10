@@ -124,7 +124,7 @@ open class LiquidFloatingActionButton : UIView {
         self.baseView.open(cells)
         
         self.isClosed = false
-        self.delegate?.liquidFloatingActionButtonDidOpen!()
+        self.delegate?.liquidFloatingActionButtonDidOpen?()
     }
 
     // close all cells
@@ -137,7 +137,7 @@ open class LiquidFloatingActionButton : UIView {
         self.baseView.close(cellArray())
         
         self.isClosed = true
-        self.delegate?.liquidFloatingActionButtonDidClose!()
+        self.delegate?.liquidFloatingActionButtonDidClose?()
     }
 
     // MARK: draw icon
