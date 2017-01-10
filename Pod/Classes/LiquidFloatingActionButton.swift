@@ -43,8 +43,8 @@ open class LiquidFloatingActionButton : UIView {
         }
     }
     
-    weak open var delegate:   LiquidFloatingActionButtonDelegate?
-    weak open var dataSource: LiquidFloatingActionButtonDataSource?
+    open var delegate:   LiquidFloatingActionButtonDelegate?
+    open var dataSource: LiquidFloatingActionButtonDataSource?
 
     open var responsible = true
     open var isOpening: Bool  {
@@ -165,7 +165,7 @@ open class LiquidFloatingActionButton : UIView {
         self.circleLayer.cornerRadius = self.frame.width * 0.5
         self.circleLayer.masksToBounds = true
         if touching && responsible {
-            self.circleLayer.backgroundColor = self.color.white(0.5).cgColor
+            self.circleLayer.backgroundColor = self.color.whiteLiquid(0.5).cgColor
         } else {
             self.circleLayer.backgroundColor = self.color.cgColor
         }
@@ -371,15 +371,15 @@ class CircleLiquidBaseView : ActionBarBaseView {
         }
 
         if let firstCell = openingCells.first {
-            bigEngine?.push(circle: baseLiquid!, other: firstCell)
+            bigEngine?.push(baseLiquid!, other: firstCell)
         }
         for i in 1..<openingCells.count {
             let prev = openingCells[i - 1]
             let cell = openingCells[i]
-            engine?.push(circle: prev, other: cell)
+            engine?.push(prev, other: cell)
         }
-        engine?.draw(parent: baseLiquid!)
-        bigEngine?.draw(parent: baseLiquid!)
+        engine?.draw(baseLiquid!)
+        bigEngine?.draw(baseLiquid!)
     }
     
     func updateOpen() {
@@ -511,7 +511,7 @@ open class LiquidFloatingCell : LiquittableCircle {
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if responsible {
             originalColor = color
-            color = originalColor.white(0.5)
+            color = originalColor.whiteLiquid(0.5)
             setNeedsDisplay()
         }
     }

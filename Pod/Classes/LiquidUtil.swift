@@ -17,7 +17,6 @@ func withBezier(_ f: (UIBezierPath) -> ()) -> UIBezierPath {
 }
 
 extension CALayer {
-    
     func appendShadow() {
         shadowColor = UIColor.black.cgColor
         shadowRadius = 2.0
@@ -30,11 +29,9 @@ extension CALayer {
         shadowRadius = 0.0
         shadowColor = UIColor.clear.cgColor
     }
-    
 }
 
 class CGMath {
-    
     static func radToDeg(_ rad: CGFloat) -> CGFloat {
         return rad * 180 / CGFloat(M_PI)
     }
